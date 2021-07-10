@@ -7,8 +7,8 @@ LiquidCrystal_I2C lcd(0x27,16,2);
 Servo myservo1;
 Servo myservo2;
 
-int irsensor1 = 2; 
-int irsensor2 = 3;
+const int irsensor1 = 2; 
+const int irsensor2 = 3;
 
 int valueirsensor1 = 0;
 int valueirsensor2 = 0;
@@ -21,9 +21,8 @@ int total;
 bool state = false;
 bool state2 = false;
 
-
-
 void setup() {
+  
   pinMode (irsensor1, INPUT);
   pinMode (irsensor2, INPUT);
   myservo1.attach(5);
@@ -39,6 +38,14 @@ void setup() {
 void loop() {
   valueirsensor1 = digitalRead(irsensor1);
   valueirsensor2 = digitalRead(irsensor2);
+
+  if (count > countmax){
+    count = countmax;
+    }
+
+  if (count < 0){
+    count = 0;
+    }
 
   if (valueirsensor1 == LOW && state == false){
     count++;
