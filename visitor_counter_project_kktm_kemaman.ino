@@ -29,23 +29,25 @@ void setup() {
   myservo2.attach(6);
   myservo1.write(0);
   myservo2.write(0);
-  lcd.init();
+  lcd.begin();
   lcd.backlight();
   lcd.setCursor(2,1); //16 row 2 coloum
   lcd.print("AVAILABLE=");
+  Serial.begin(9600);
 }
 
 void loop() {
   valueirsensor1 = digitalRead(irsensor1);
   valueirsensor2 = digitalRead(irsensor2);
-
-  if (count > countmax){
-    count = countmax;
-    }
-
-  if (count < 0){
-    count = 0;
-    }
+  
+  //Serial.print(valueirsensor1);
+  //Serial.print("   ");
+  //Serial.print(valueirsensor2);
+  //Serial.print("   ");
+  //Serial.print(state);
+  //Serial.print("   ");
+  //Serial.println(state2);
+  //delay(1000);
 
   if (valueirsensor1 == LOW && state == false){
     count++;
@@ -71,8 +73,16 @@ void loop() {
     lcd.print(total);
     total = 0;
     state = true;
+
+    if (count > 5){
+    count = 5;
     }
-  else {
+
+    if (count < 0){
+    count = 0;
+    }
+    }
+  if (valueirsensor1 == HIGH && state == true) {
     state = false;
     }
   
@@ -101,13 +111,21 @@ void loop() {
     lcd.print(total);
     total = 0;
     state2 = true;
+
+    if (count > 5){
+    count = 5;
     }
 
-  else {
+    if (count < 0){
+    count = 0;
+    }
+    }
+
+  if (valueirsensor2 == HIGH && state2 == true) {
     state2 = false;
     }
 
-  if (count < 5 && state == true){
+  if (count <= 5 && count >= 0 && state == true){
     myservo1.write(90);
     delay (4000); //DELAY BUKAK PINTU masuk
     myservo1.write(0);   
