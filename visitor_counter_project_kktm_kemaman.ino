@@ -14,7 +14,7 @@ int valueirsensor1 = 0;
 int valueirsensor2 = 0;
 
 int count = 0;
-int countmax = 4;
+int countmax = 5;
 
 int total;
 
@@ -82,12 +82,12 @@ void loop() {
     total = 0;
     state = true;
 
-    if (count >= 5){
+    if (count > 5){
     state = false;
     count = 5;
     }
 
-    if (count <= 0){
+    if (count < 0){
     count = 0;
     }
     }
@@ -129,12 +129,12 @@ void loop() {
     total = 0;
     state2 = true;
 
-    if (count >= 5){
+    if (count > 5){
     state = false;
     count = 5;
     }
 
-    if (count <= 0){
+    if (count < 0){
     count = 0;
     }
     }
