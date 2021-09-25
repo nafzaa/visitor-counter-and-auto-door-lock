@@ -52,8 +52,8 @@ void loop() {
   if (valueirsensor1 == LOW && state == false){
     count++;
 
-    if (count >= 6){
-    count = 5;
+    if (count >= countmax){
+    count = countmax;
     }
 
     if (count <= 0){
@@ -82,12 +82,12 @@ void loop() {
     total = 0;
     state = true;
 
-    if (count > 5){
+    if (count >= countmax){
     state = false;
-    count = 5;
+    count = countmax;
     }
 
-    if (count < 0){
+    if (count <= 0){
     count = 0;
     }
     }
@@ -99,8 +99,8 @@ void loop() {
   if (valueirsensor2 == LOW && state2 == false){
     count--;
 
-    if (count >= 6){
-    count = 5;
+    if (count >= countmax){
+    count = countmax;
     }
 
     if (count <= 0){
@@ -129,12 +129,12 @@ void loop() {
     total = 0;
     state2 = true;
 
-    if (count > 5){
+    if (count >= countmax){
     state = false;
-    count = 5;
+    count = countmax;
     }
 
-    if (count < 0){
+    if (count <= 0){
     count = 0;
     }
     }
