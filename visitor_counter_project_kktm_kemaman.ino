@@ -52,7 +52,7 @@ void loop() {
   if (valueirsensor1 == LOW && state == false){
     count++;
 
-    if (count >= 5){
+    if (count >= 6){
     count = 5;
     }
 
@@ -99,7 +99,7 @@ void loop() {
   if (valueirsensor2 == LOW && state2 == false){
     count--;
 
-    if (count >= 5){
+    if (count >= 6){
     count = 5;
     }
 
