@@ -74,11 +74,12 @@ void loop() {
     total = 0;
     state = true;
 
-    if (count > 5){
+    if (count >= 5){
+    state = false;
     count = 5;
     }
 
-    if (count < 0){
+    if (count <= 0){
     count = 0;
     }
     }
@@ -112,11 +113,12 @@ void loop() {
     total = 0;
     state2 = true;
 
-    if (count > 5){
+    if (count >= 5){
+    state = false;
     count = 5;
     }
 
-    if (count < 0){
+    if (count <= 0){
     count = 0;
     }
     }
@@ -125,7 +127,7 @@ void loop() {
     state2 = false;
     }
 
-  if (count <= 5 && count >= 0 && state == true){
+  if (count <= 5 && state == true){
     myservo1.write(90);
     delay (4000); //DELAY BUKAK PINTU masuk
     myservo1.write(0);   
